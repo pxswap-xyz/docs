@@ -1,0 +1,426 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>PxLend</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../book.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="../../index.html">Home</a></li><li class="chapter-item affix "><li class="part-title">src</li><li class="chapter-item "><a href="../../src/utils/index.html">❱ utils</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../../src/utils/ERC721Holder.sol/contract.ERC721Holder.html">ERC721Holder</a></li><li class="chapter-item "><a href="../../src/utils/HandleERC20.sol/contract.HandleERC20.html">HandleERC20</a></li><li class="chapter-item "><a href="../../src/utils/HandleERC721.sol/contract.HandleERC721.html">HandleERC721</a></li><li class="chapter-item "><a href="../../src/utils/IERC165.sol/contract.IERC165.html">IERC165</a></li><li class="chapter-item "><a href="../../src/utils/IERC20.sol/contract.IERC20.html">IERC20</a></li><li class="chapter-item "><a href="../../src/utils/IERC721.sol/contract.IERC721.html">IERC721</a></li><li class="chapter-item "><a href="../../src/utils/IERC721Receiver.sol/contract.IERC721Receiver.html">IERC721Receiver</a></li><li class="chapter-item "><a href="../../src/utils/IErrors.sol/contract.IErrors.html">IErrors</a></li><li class="chapter-item "><a href="../../src/utils/ILendData.sol/contract.ILendData.html">ILendData</a></li><li class="chapter-item "><a href="../../src/utils/Ownable.sol/contract.Ownable.html">Ownable</a></li></ol></li><li class="chapter-item expanded "><a href="../../src/PxLend.sol/contract.PxLend.html" class="active">PxLend</a></li><li class="chapter-item "><a href="../../src/Pxswap.sol/contract.Pxswap.html">Pxswap</a></li><li class="chapter-item "><a href="../../src/SwapData.sol/contract.SwapData.html">SwapData</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/pxswap-xyz/pxswap" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="pxlend"><a class="header" href="#pxlend">PxLend</a></h1>
+<p><a href="https://github.com/pxswap-xyz/pxswap/blob/2c1b5e496d31f38806f41c98ffce3d93b591270c/src/PxLend.sol">Git Source</a></p>
+<p><strong>Inherits:</strong>
+<a href="/src/utils/ILendData.sol/contract.ILendData.html">ILendData</a>, <a href="/src/utils/Ownable.sol/contract.Ownable.html">Ownable</a>, <a href="/src/utils/ERC721Holder.sol/contract.ERC721Holder.html">ERC721Holder</a>, ERC1155Receiver, ERC1155Holder</p>
+<p><strong>Authors:</strong>
+pxswap (https://github.com/pxswap-xyz/pxswap/blob/main/src/Pxswap.sol), Ali Konuk - @alikonuk1</p>
+<p><em>This contract is for lending and borrowing non-fungible tokens (NFTs)</em></p>
+<p><em>Please reach out to ali@pxswap.xyz if you find any issues</em></p>
+<h2 id="state-variables"><a class="header" href="#state-variables">State Variables</a></h2>
+<h3 id="beneficiary"><a class="header" href="#beneficiary">beneficiary</a></h3>
+<pre><code class="language-solidity">address payable private beneficiary;
+</code></pre>
+<h3 id="seconds_in_day"><a class="header" href="#seconds_in_day">SECONDS_IN_DAY</a></h3>
+<pre><code class="language-solidity">uint256 private constant SECONDS_IN_DAY = 86400;
+</code></pre>
+<h3 id="lendingid"><a class="header" href="#lendingid">lendingID</a></h3>
+<pre><code class="language-solidity">uint256 private lendingID = 1;
+</code></pre>
+<h3 id="borrowingid"><a class="header" href="#borrowingid">borrowingID</a></h3>
+<pre><code class="language-solidity">uint256 private borrowingID = 1;
+</code></pre>
+<h3 id="borrowfee"><a class="header" href="#borrowfee">borrowFee</a></h3>
+<pre><code class="language-solidity">uint256 public borrowFee = 100;
+</code></pre>
+<h3 id="tokenmap"><a class="header" href="#tokenmap">tokenMap</a></h3>
+<pre><code class="language-solidity">mapping(uint8 =&gt; address) private tokenMap;
+</code></pre>
+<h3 id="lendings"><a class="header" href="#lendings">lendings</a></h3>
+<pre><code class="language-solidity">mapping(bytes32 =&gt; Lending) private lendings;
+</code></pre>
+<h3 id="borrowings"><a class="header" href="#borrowings">borrowings</a></h3>
+<pre><code class="language-solidity">mapping(bytes32 =&gt; Borrowing) private borrowings;
+</code></pre>
+<h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
+<h3 id="constructor"><a class="header" href="#constructor">constructor</a></h3>
+<pre><code class="language-solidity">constructor(address payable beneficiary_);
+</code></pre>
+<h3 id="lend"><a class="header" href="#lend">lend</a></h3>
+<pre><code class="language-solidity">function lend(
+    ILendData.NFTStandard[] memory nftStandard,
+    address[] memory nftAddress,
+    uint256[] memory tokenID,
+    uint256[] memory lendAmount,
+    uint8[] memory maxBorrowDuration,
+    bytes4[] memory dailyBorrowPrice,
+    uint8[] memory paymentToken,
+    bool[] memory willAutoRenew
+) external;
+</code></pre>
+<h3 id="stoplend"><a class="header" href="#stoplend">stopLend</a></h3>
+<pre><code class="language-solidity">function stopLend(
+    ILendData.NFTStandard[] memory nftStandard,
+    address[] memory nftAddress,
+    uint256[] memory tokenID,
+    uint256[] memory _lendingID
+) external;
+</code></pre>
+<h3 id="borrow"><a class="header" href="#borrow">borrow</a></h3>
+<pre><code class="language-solidity">function borrow(
+    ILendData.NFTStandard[] memory nftStandard,
+    address[] memory nftAddress,
+    uint256[] memory tokenID,
+    uint256[] memory _lendingID,
+    uint8[] memory borrowDuration,
+    uint256[] memory borrowAmount
+) external payable;
+</code></pre>
+<h3 id="stopborrow"><a class="header" href="#stopborrow">stopBorrow</a></h3>
+<pre><code class="language-solidity">function stopBorrow(
+    ILendData.NFTStandard[] memory nftStandard,
+    address[] memory nftAddress,
+    uint256[] memory tokenID,
+    uint256[] memory _lendingID,
+    uint256[] memory _borrowingID
+) external;
+</code></pre>
+<h3 id="claimborrow"><a class="header" href="#claimborrow">claimBorrow</a></h3>
+<pre><code class="language-solidity">function claimBorrow(
+    ILendData.NFTStandard[] memory nftStandard,
+    address[] memory nftAddress,
+    uint256[] memory tokenID,
+    uint256[] memory _lendingID,
+    uint256[] memory _borrowingID
+) external;
+</code></pre>
+<h3 id="handlelend"><a class="header" href="#handlelend">handleLend</a></h3>
+<pre><code class="language-solidity">function handleLend(ILendData.CallData memory cd) internal;
+</code></pre>
+<h3 id="handlestoplend"><a class="header" href="#handlestoplend">handleStopLend</a></h3>
+<pre><code class="language-solidity">function handleStopLend(ILendData.CallData memory cd) internal;
+</code></pre>
+<h3 id="handleborrow"><a class="header" href="#handleborrow">handleBorrow</a></h3>
+<pre><code class="language-solidity">function handleBorrow(ILendData.CallData memory cd) internal;
+</code></pre>
+<h3 id="handlestopborrow"><a class="header" href="#handlestopborrow">handleStopBorrow</a></h3>
+<pre><code class="language-solidity">function handleStopBorrow(ILendData.CallData memory cd) private;
+</code></pre>
+<h3 id="handleclaimborrow"><a class="header" href="#handleclaimborrow">handleClaimBorrow</a></h3>
+<pre><code class="language-solidity">function handleClaimBorrow(CallData memory cd) private;
+</code></pre>
+<h3 id="managewillautorenew"><a class="header" href="#managewillautorenew">manageWillAutoRenew</a></h3>
+<pre><code class="language-solidity">function manageWillAutoRenew(
+    ILendData.Lending storage lending,
+    ILendData.Borrowing storage borrowing,
+    address nftAddress,
+    ILendData.NFTStandard nftStandard,
+    uint256 tokenID,
+    uint256 lendingID
+) internal;
+</code></pre>
+<h3 id="bundlecall"><a class="header" href="#bundlecall">bundleCall</a></h3>
+<pre><code class="language-solidity">function bundleCall(function(ILendData.CallData memory) handler, ILendData.CallData memory cd) internal;
+</code></pre>
+<h3 id="takefee"><a class="header" href="#takefee">takeFee</a></h3>
+<pre><code class="language-solidity">function takeFee(uint256 borrowAmt, ERC20 token) internal returns (uint256 fee);
+</code></pre>
+<h3 id="distributepayments"><a class="header" href="#distributepayments">distributePayments</a></h3>
+<pre><code class="language-solidity">function distributePayments(
+    ILendData.Lending memory lending,
+    ILendData.Borrowing memory borrowing,
+    uint256 secondsSinceBorrowStart
+) private;
+</code></pre>
+<h3 id="distributeclaimpayment"><a class="header" href="#distributeclaimpayment">distributeClaimPayment</a></h3>
+<pre><code class="language-solidity">function distributeClaimPayment(ILendData.Lending memory lending, ILendData.Borrowing memory borrowing) internal;
+</code></pre>
+<h3 id="safetransfer"><a class="header" href="#safetransfer">safeTransfer</a></h3>
+<pre><code class="language-solidity">function safeTransfer(
+    CallData memory cd,
+    address from,
+    address to,
+    uint256[] memory tokenID,
+    uint256[] memory lendAmount
+) internal;
+</code></pre>
+<h3 id="getlending9cff8d4"><a class="header" href="#getlending9cff8d4">getLending9CFF8D4</a></h3>
+<pre><code class="language-solidity">function getLending9CFF8D4(address nftAddress, uint256 tokenID, uint256 _lendingID)
+    external
+    view
+    returns (uint8, address, uint8, bytes4, uint16, uint16, uint8);
+</code></pre>
+<h3 id="getborrowing144dc65d"><a class="header" href="#getborrowing144dc65d">getBorrowing144DC65D</a></h3>
+<pre><code class="language-solidity">function getBorrowing144DC65D(address nftAddress, uint256 tokenID, uint256 _borrowingID)
+    external
+    view
+    returns (address, uint16, uint8, uint32);
+</code></pre>
+<h3 id="createlendcalldata"><a class="header" href="#createlendcalldata">createLendCallData</a></h3>
+<pre><code class="language-solidity">function createLendCallData(
+    ILendData.NFTStandard[] memory nftStandard,
+    address[] memory nftAddress,
+    uint256[] memory tokenID,
+    uint256[] memory lendAmount,
+    uint8[] memory maxBorrowDuration,
+    bytes4[] memory dailyBorrowPrice,
+    uint8[] memory paymentToken,
+    bool[] memory willAutoRenew
+) internal pure returns (CallData memory cd);
+</code></pre>
+<h3 id="createborrowcalldata"><a class="header" href="#createborrowcalldata">createBorrowCallData</a></h3>
+<pre><code class="language-solidity">function createBorrowCallData(
+    ILendData.NFTStandard[] memory nftStandard,
+    address[] memory nftAddress,
+    uint256[] memory tokenID,
+    uint256[] memory _lendingID,
+    uint8[] memory borrowDuration,
+    uint256[] memory borrowAmount
+) internal pure returns (CallData memory cd);
+</code></pre>
+<h3 id="createactioncalldata"><a class="header" href="#createactioncalldata">createActionCallData</a></h3>
+<pre><code class="language-solidity">function createActionCallData(
+    ILendData.NFTStandard[] memory nftStandard,
+    address[] memory nftAddress,
+    uint256[] memory tokenID,
+    uint256[] memory _lendingID,
+    uint256[] memory _borrowingID
+) internal pure returns (CallData memory cd);
+</code></pre>
+<h3 id="unpackprice"><a class="header" href="#unpackprice">unpackPrice</a></h3>
+<pre><code class="language-solidity">function unpackPrice(bytes4 price, uint256 scale) internal pure returns (uint256);
+</code></pre>
+<h3 id="slicearr"><a class="header" href="#slicearr">sliceArr</a></h3>
+<pre><code class="language-solidity">function sliceArr(uint256[] memory arr, uint256 fromIx, uint256 toIx, uint256 arrOffset)
+    internal
+    pure
+    returns (uint256[] memory r);
+</code></pre>
+<h3 id="isnotzero"><a class="header" href="#isnotzero">isNotZero</a></h3>
+<pre><code class="language-solidity">function isNotZero(address addr) internal pure;
+</code></pre>
+<h3 id="iszero"><a class="header" href="#iszero">isZero</a></h3>
+<pre><code class="language-solidity">function isZero(address addr) internal pure;
+</code></pre>
+<h3 id="isreturnable"><a class="header" href="#isreturnable">isReturnable</a></h3>
+<pre><code class="language-solidity">function isReturnable(Borrowing memory borrowing, address msgSender, uint256 blockTimestamp) internal pure;
+</code></pre>
+<h3 id="ispastreturndate"><a class="header" href="#ispastreturndate">isPastReturnDate</a></h3>
+<pre><code class="language-solidity">function isPastReturnDate(Borrowing memory borrowing, uint256 nowTime) internal pure returns (bool);
+</code></pre>
+<h3 id="getpaymenttoken"><a class="header" href="#getpaymenttoken">getPaymentToken</a></h3>
+<pre><code class="language-solidity">function getPaymentToken(uint8 paymentToken) internal view returns (address);
+</code></pre>
+<h3 id="setpaymenttoken"><a class="header" href="#setpaymenttoken">setPaymentToken</a></h3>
+<pre><code class="language-solidity">function setPaymentToken(uint8 paymentToken, address t) external payable onlyOwner;
+</code></pre>
+<h3 id="setborrowfee"><a class="header" href="#setborrowfee">setBorrowFee</a></h3>
+<pre><code class="language-solidity">function setBorrowFee(uint256 borrowFee_) external payable onlyOwner;
+</code></pre>
+<h3 id="setbeneficiary"><a class="header" href="#setbeneficiary">setBeneficiary</a></h3>
+<pre><code class="language-solidity">function setBeneficiary(address payable beneficiary_) external payable onlyOwner;
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../src/utils/Ownable.sol/contract.Ownable.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../src/Pxswap.sol/contract.Pxswap.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../src/utils/Ownable.sol/contract.Ownable.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../src/Pxswap.sol/contract.Pxswap.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../solidity.min.js"></script>
+
+
+    </body>
+</html>

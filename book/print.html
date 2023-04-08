@@ -1,0 +1,1079 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title></title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="book.css">
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item "><a href="index.html">Home</a></li><li class="chapter-item affix "><li class="part-title">src</li><li class="chapter-item "><a href="src/utils/index.html">❱ utils</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="src/utils/ERC721Holder.sol/contract.ERC721Holder.html">ERC721Holder</a></li><li class="chapter-item "><a href="src/utils/HandleERC20.sol/contract.HandleERC20.html">HandleERC20</a></li><li class="chapter-item "><a href="src/utils/HandleERC721.sol/contract.HandleERC721.html">HandleERC721</a></li><li class="chapter-item "><a href="src/utils/IERC165.sol/contract.IERC165.html">IERC165</a></li><li class="chapter-item "><a href="src/utils/IERC20.sol/contract.IERC20.html">IERC20</a></li><li class="chapter-item "><a href="src/utils/IERC721.sol/contract.IERC721.html">IERC721</a></li><li class="chapter-item "><a href="src/utils/IERC721Receiver.sol/contract.IERC721Receiver.html">IERC721Receiver</a></li><li class="chapter-item "><a href="src/utils/IErrors.sol/contract.IErrors.html">IErrors</a></li><li class="chapter-item "><a href="src/utils/ILendData.sol/contract.ILendData.html">ILendData</a></li><li class="chapter-item "><a href="src/utils/Ownable.sol/contract.Ownable.html">Ownable</a></li></ol></li><li class="chapter-item "><a href="src/PxLend.sol/contract.PxLend.html">PxLend</a></li><li class="chapter-item "><a href="src/Pxswap.sol/contract.Pxswap.html">Pxswap</a></li><li class="chapter-item "><a href="src/SwapData.sol/contract.SwapData.html">SwapData</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/pxswap-xyz/pxswap" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <pre><code> ______   __  __     ______     __     __     ______     ______  
+/\  == \ /\_\_\_\   /\  ___\   /\ \  _ \ \   /\  __ \   /\  == \ 
+\ \  _-/ \/_/\_\/_  \ \___  \  \ \ \/ &quot;.\ \  \ \  __ \  \ \  _-/ 
+ \ \_\     /\_\/\_\  \/\_____\  \ \__/&quot;.~\_\  \ \_\ \_\  \ \_\   
+  \/_/     \/_/\/_/   \/_____/   \/_/   \/_/   \/_/\/_/   \/_/   
+</code></pre>
+<h3 id="deployments"><a class="header" href="#deployments">Deployments</a></h3>
+<ul>
+<li>Optimism: 0x812940EDA4274702F9F17383281b8b8FD8cB6b7e</li>
+<li>Polygon: 0x93859840aC947cDb9a1e14Bab3b833A6563E7481</li>
+<li>Kava: 0x638B06F80FB28F109E65C9d5cC585aDf9A0c3f9f</li>
+<li>Göerli: 0x61e105c05EcAC5adfd8959aFa46cf454A4702F09</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="contents"><a class="header" href="#contents">Contents</a></h1>
+<ul>
+<li><a href="src/utils/ERC721Holder.sol/contract.ERC721Holder.html">ERC721Holder</a></li>
+<li><a href="src/utils/HandleERC20.sol/contract.HandleERC20.html">HandleERC20</a></li>
+<li><a href="src/utils/HandleERC721.sol/contract.HandleERC721.html">HandleERC721</a></li>
+<li><a href="src/utils/IERC165.sol/contract.IERC165.html">IERC165</a></li>
+<li><a href="src/utils/IERC20.sol/contract.IERC20.html">IERC20</a></li>
+<li><a href="src/utils/IERC721.sol/contract.IERC721.html">IERC721</a></li>
+<li><a href="src/utils/IERC721Receiver.sol/contract.IERC721Receiver.html">IERC721Receiver</a></li>
+<li><a href="src/utils/IErrors.sol/contract.IErrors.html">IErrors</a></li>
+<li><a href="src/utils/ILendData.sol/contract.ILendData.html">ILendData</a></li>
+<li><a href="src/utils/Ownable.sol/contract.Ownable.html">Ownable</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="erc721holder"><a class="header" href="#erc721holder">ERC721Holder</a></h1>
+<p><a href="https://github.com/pxswap-xyz/pxswap/blob/2c1b5e496d31f38806f41c98ffce3d93b591270c/src/utils/ERC721Holder.sol">Git Source</a></p>
+<p><strong>Inherits:</strong>
+<a href="src/utils/ERC721Holder.sol//src/utils/IERC721Receiver.sol/contract.IERC721Receiver.html">IERC721Receiver</a></p>
+<p><em>Implementation of the {IERC721Receiver} interface.
+Accepts all token transfers.
+Make sure the contract is able to use its token with {IERC721-safeTransferFrom}, {IERC721-approve} or {IERC721-setApprovalForAll}.</em></p>
+<h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
+<h3 id="onerc721received"><a class="header" href="#onerc721received">onERC721Received</a></h3>
+<p><em>See {IERC721Receiver-onERC721Received}.
+Always returns <code>IERC721Receiver.onERC721Received.selector</code>.</em></p>
+<pre><code class="language-solidity">function onERC721Received(address, address, uint256, bytes memory) public virtual override returns (bytes4);
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="handleerc20"><a class="header" href="#handleerc20">HandleERC20</a></h1>
+<p><a href="https://github.com/pxswap-xyz/pxswap/blob/2c1b5e496d31f38806f41c98ffce3d93b591270c/src/utils/HandleERC20.sol">Git Source</a></p>
+<h2 id="functions-1"><a class="header" href="#functions-1">Functions</a></h2>
+<h3 id="transfertoken"><a class="header" href="#transfertoken">transferToken</a></h3>
+<pre><code class="language-solidity">function transferToken(address wantToken, address from, address to, address protocol, uint256 amount, uint256 fee)
+    internal;
+</code></pre>
+<h2 id="errors"><a class="header" href="#errors">Errors</a></h2>
+<h3 id="notsuccessful"><a class="header" href="#notsuccessful">NotSuccessful</a></h3>
+<pre><code class="language-solidity">error NotSuccessful();
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="handleerc721"><a class="header" href="#handleerc721">HandleERC721</a></h1>
+<p><a href="https://github.com/pxswap-xyz/pxswap/blob/2c1b5e496d31f38806f41c98ffce3d93b591270c/src/utils/HandleERC721.sol">Git Source</a></p>
+<h2 id="functions-2"><a class="header" href="#functions-2">Functions</a></h2>
+<h3 id="transfernft"><a class="header" href="#transfernft">transferNft</a></h3>
+<pre><code class="language-solidity">function transferNft(address[] memory nft_, address from, address to, uint256 lenNft, uint256[] memory id) internal;
+</code></pre>
+<h3 id="transfernft_"><a class="header" href="#transfernft_">transferNft_</a></h3>
+<pre><code class="language-solidity">function transferNft_(address nft_, address from, address to, uint256 id) internal;
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ierc165"><a class="header" href="#ierc165">IERC165</a></h1>
+<p><a href="https://github.com/pxswap-xyz/pxswap/blob/2c1b5e496d31f38806f41c98ffce3d93b591270c/src/utils/IERC165.sol">Git Source</a></p>
+<p><em>Interface of the ERC165 standard, as defined in the
+https://eips.ethereum.org/EIPS/eip-165[EIP].
+Implementers can declare support of contract interfaces, which can then be
+queried by others ({ERC165Checker}).
+For an implementation, see {ERC165}.</em></p>
+<h2 id="functions-3"><a class="header" href="#functions-3">Functions</a></h2>
+<h3 id="supportsinterface"><a class="header" href="#supportsinterface">supportsInterface</a></h3>
+<p><em>Returns true if this contract implements the interface defined by
+<code>interfaceId</code>. See the corresponding
+https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[EIP section]
+to learn more about how these ids are created.
+This function call must use less than 30 000 gas.</em></p>
+<pre><code class="language-solidity">function supportsInterface(bytes4 interfaceId) external view returns (bool);
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ierc20"><a class="header" href="#ierc20">IERC20</a></h1>
+<p><a href="https://github.com/pxswap-xyz/pxswap/blob/2c1b5e496d31f38806f41c98ffce3d93b591270c/src/utils/IERC20.sol">Git Source</a></p>
+<h2 id="functions-4"><a class="header" href="#functions-4">Functions</a></h2>
+<h3 id="decimals"><a class="header" href="#decimals">decimals</a></h3>
+<pre><code class="language-solidity">function decimals() external view returns (uint256);
+</code></pre>
+<h3 id="balanceof"><a class="header" href="#balanceof">balanceOf</a></h3>
+<pre><code class="language-solidity">function balanceOf(address account) external view returns (uint256);
+</code></pre>
+<h3 id="transfer"><a class="header" href="#transfer">transfer</a></h3>
+<pre><code class="language-solidity">function transfer(address to, uint256 amount) external returns (bool);
+</code></pre>
+<h3 id="allowance"><a class="header" href="#allowance">allowance</a></h3>
+<pre><code class="language-solidity">function allowance(address owner, address spender) external view returns (uint256);
+</code></pre>
+<h3 id="approve"><a class="header" href="#approve">approve</a></h3>
+<pre><code class="language-solidity">function approve(address spender, uint256 amount) external returns (bool);
+</code></pre>
+<h3 id="transferfrom"><a class="header" href="#transferfrom">transferFrom</a></h3>
+<pre><code class="language-solidity">function transferFrom(address from, address to, uint256 amount) external returns (bool);
+</code></pre>
+<h2 id="events"><a class="header" href="#events">Events</a></h2>
+<h3 id="transfer-1"><a class="header" href="#transfer-1">Transfer</a></h3>
+<pre><code class="language-solidity">event Transfer(address indexed from, address indexed to, uint256 value);
+</code></pre>
+<h3 id="approval"><a class="header" href="#approval">Approval</a></h3>
+<pre><code class="language-solidity">event Approval(address indexed owner, address indexed spender, uint256 value);
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ierc721"><a class="header" href="#ierc721">IERC721</a></h1>
+<p><a href="https://github.com/pxswap-xyz/pxswap/blob/2c1b5e496d31f38806f41c98ffce3d93b591270c/src/utils/IERC721.sol">Git Source</a></p>
+<p><strong>Inherits:</strong>
+<a href="src/utils/IERC721.sol//src/utils/IERC165.sol/contract.IERC165.html">IERC165</a></p>
+<p><em>Required interface of an ERC721 compliant contract.</em></p>
+<h2 id="functions-5"><a class="header" href="#functions-5">Functions</a></h2>
+<h3 id="balanceof-1"><a class="header" href="#balanceof-1">balanceOf</a></h3>
+<p><em>Returns the number of tokens in <code>owner</code>'s account.</em></p>
+<pre><code class="language-solidity">function balanceOf(address owner) external view returns (uint256 balance);
+</code></pre>
+<h3 id="ownerof"><a class="header" href="#ownerof">ownerOf</a></h3>
+<p>*Returns the owner of the <code>tokenId</code> token.
+Requirements:</p>
+<ul>
+<li><code>tokenId</code> must exist.*</li>
+</ul>
+<pre><code class="language-solidity">function ownerOf(uint256 tokenId) external view returns (address owner);
+</code></pre>
+<h3 id="safetransferfrom"><a class="header" href="#safetransferfrom">safeTransferFrom</a></h3>
+<p>*Safely transfers <code>tokenId</code> token from <code>from</code> to <code>to</code>.
+Requirements:</p>
+<ul>
+<li><code>from</code> cannot be the zero address.</li>
+<li><code>to</code> cannot be the zero address.</li>
+<li><code>tokenId</code> token must exist and be owned by <code>from</code>.</li>
+<li>If the caller is not <code>from</code>, it must be approved to move this token by either {approve} or {setApprovalForAll}.</li>
+<li>If <code>to</code> refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer.
+Emits a {Transfer} event.*</li>
+</ul>
+<pre><code class="language-solidity">function safeTransferFrom(address from, address to, uint256 tokenId, bytes calldata data) external;
+</code></pre>
+<h3 id="safetransferfrom-1"><a class="header" href="#safetransferfrom-1">safeTransferFrom</a></h3>
+<p>*Safely transfers <code>tokenId</code> token from <code>from</code> to <code>to</code>, checking first that contract recipients
+are aware of the ERC721 protocol to prevent tokens from being forever locked.
+Requirements:</p>
+<ul>
+<li><code>from</code> cannot be the zero address.</li>
+<li><code>to</code> cannot be the zero address.</li>
+<li><code>tokenId</code> token must exist and be owned by <code>from</code>.</li>
+<li>If the caller is not <code>from</code>, it must have been allowed to move this token by either {approve} or {setApprovalForAll}.</li>
+<li>If <code>to</code> refers to a smart contract, it must implement {IERC721Receiver-onERC721Received}, which is called upon a safe transfer.
+Emits a {Transfer} event.*</li>
+</ul>
+<pre><code class="language-solidity">function safeTransferFrom(address from, address to, uint256 tokenId) external;
+</code></pre>
+<h3 id="transferfrom-1"><a class="header" href="#transferfrom-1">transferFrom</a></h3>
+<p>*Transfers <code>tokenId</code> token from <code>from</code> to <code>to</code>.
+WARNING: Note that the caller is responsible to confirm that the recipient is capable of receiving ERC721
+or else they may be permanently lost. Usage of {safeTransferFrom} prevents loss, though the caller must
+understand this adds an external call which potentially creates a reentrancy vulnerability.
+Requirements:</p>
+<ul>
+<li><code>from</code> cannot be the zero address.</li>
+<li><code>to</code> cannot be the zero address.</li>
+<li><code>tokenId</code> token must be owned by <code>from</code>.</li>
+<li>If the caller is not <code>from</code>, it must be approved to move this token by either {approve} or {setApprovalForAll}.
+Emits a {Transfer} event.*</li>
+</ul>
+<pre><code class="language-solidity">function transferFrom(address from, address to, uint256 tokenId) external;
+</code></pre>
+<h3 id="approve-1"><a class="header" href="#approve-1">approve</a></h3>
+<p>*Gives permission to <code>to</code> to transfer <code>tokenId</code> token to another account.
+The approval is cleared when the token is transferred.
+Only a single account can be approved at a time, so approving the zero address clears previous approvals.
+Requirements:</p>
+<ul>
+<li>The caller must own the token or be an approved operator.</li>
+<li><code>tokenId</code> must exist.
+Emits an {Approval} event.*</li>
+</ul>
+<pre><code class="language-solidity">function approve(address to, uint256 tokenId) external;
+</code></pre>
+<h3 id="setapprovalforall"><a class="header" href="#setapprovalforall">setApprovalForAll</a></h3>
+<p>*Approve or remove <code>operator</code> as an operator for the caller.
+Operators can call {transferFrom} or {safeTransferFrom} for any token owned by the caller.
+Requirements:</p>
+<ul>
+<li>The <code>operator</code> cannot be the caller.
+Emits an {ApprovalForAll} event.*</li>
+</ul>
+<pre><code class="language-solidity">function setApprovalForAll(address operator, bool _approved) external;
+</code></pre>
+<h3 id="getapproved"><a class="header" href="#getapproved">getApproved</a></h3>
+<p>*Returns the account approved for <code>tokenId</code> token.
+Requirements:</p>
+<ul>
+<li><code>tokenId</code> must exist.*</li>
+</ul>
+<pre><code class="language-solidity">function getApproved(uint256 tokenId) external view returns (address operator);
+</code></pre>
+<h3 id="isapprovedforall"><a class="header" href="#isapprovedforall">isApprovedForAll</a></h3>
+<p><em>Returns if the <code>operator</code> is allowed to manage all of the assets of <code>owner</code>.
+See {setApprovalForAll}</em></p>
+<pre><code class="language-solidity">function isApprovedForAll(address owner, address operator) external view returns (bool);
+</code></pre>
+<h2 id="events-1"><a class="header" href="#events-1">Events</a></h2>
+<h3 id="transfer-2"><a class="header" href="#transfer-2">Transfer</a></h3>
+<p><em>Emitted when <code>tokenId</code> token is transferred from <code>from</code> to <code>to</code>.</em></p>
+<pre><code class="language-solidity">event Transfer(address indexed from, address indexed to, uint256 indexed tokenId);
+</code></pre>
+<h3 id="approval-1"><a class="header" href="#approval-1">Approval</a></h3>
+<p><em>Emitted when <code>owner</code> enables <code>approved</code> to manage the <code>tokenId</code> token.</em></p>
+<pre><code class="language-solidity">event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId);
+</code></pre>
+<h3 id="approvalforall"><a class="header" href="#approvalforall">ApprovalForAll</a></h3>
+<p><em>Emitted when <code>owner</code> enables or disables (<code>approved</code>) <code>operator</code> to manage all of its assets.</em></p>
+<pre><code class="language-solidity">event ApprovalForAll(address indexed owner, address indexed operator, bool approved);
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ierc721receiver"><a class="header" href="#ierc721receiver">IERC721Receiver</a></h1>
+<p><a href="https://github.com/pxswap-xyz/pxswap/blob/2c1b5e496d31f38806f41c98ffce3d93b591270c/src/utils/IERC721Receiver.sol">Git Source</a></p>
+<p><em>Interface for any contract that wants to support safeTransfers
+from ERC721 asset contracts.</em></p>
+<h2 id="functions-6"><a class="header" href="#functions-6">Functions</a></h2>
+<h3 id="onerc721received-1"><a class="header" href="#onerc721received-1">onERC721Received</a></h3>
+<p><em>Whenever an {IERC721} <code>tokenId</code> token is transferred to this contract via {IERC721-safeTransferFrom}
+by <code>operator</code> from <code>from</code>, this function is called.
+It must return its Solidity selector to confirm the token transfer.
+If any other value is returned or the interface is not implemented by the recipient, the transfer will be reverted.
+The selector can be obtained in Solidity with <code>IERC721Receiver.onERC721Received.selector</code>.</em></p>
+<pre><code class="language-solidity">function onERC721Received(address operator, address from, uint256 tokenId, bytes calldata data)
+    external
+    returns (bytes4);
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ierrors"><a class="header" href="#ierrors">IErrors</a></h1>
+<p><a href="https://github.com/pxswap-xyz/pxswap/blob/2c1b5e496d31f38806f41c98ffce3d93b591270c/src/utils/IErrors.sol">Git Source</a></p>
+<h2 id="errors-1"><a class="header" href="#errors-1">Errors</a></h2>
+<h3 id="zero"><a class="header" href="#zero">ZERO</a></h3>
+<pre><code class="language-solidity">error ZERO();
+</code></pre>
+<h3 id="no_nfts"><a class="header" href="#no_nfts">NO_NFTS</a></h3>
+<pre><code class="language-solidity">error NO_NFTS();
+</code></pre>
+<h3 id="own_nft"><a class="header" href="#own_nft">OWN_NFT</a></h3>
+<pre><code class="language-solidity">error OWN_NFT();
+</code></pre>
+<h3 id="borrowed"><a class="header" href="#borrowed">BORROWED</a></h3>
+<pre><code class="language-solidity">error BORROWED();
+</code></pre>
+<h3 id="only_one"><a class="header" href="#only_one">ONLY_ONE</a></h3>
+<pre><code class="language-solidity">error ONLY_ONE();
+</code></pre>
+<h3 id="not_zero"><a class="header" href="#not_zero">NOT_ZERO</a></h3>
+<pre><code class="language-solidity">error NOT_ZERO();
+</code></pre>
+<h3 id="not_uint8"><a class="header" href="#not_uint8">NOT_UINT8</a></h3>
+<pre><code class="language-solidity">error NOT_UINT8();
+</code></pre>
+<h3 id="wrong_fee"><a class="header" href="#wrong_fee">WRONG_FEE</a></h3>
+<pre><code class="language-solidity">error WRONG_FEE();
+</code></pre>
+<h3 id="zero_price"><a class="header" href="#zero_price">ZERO_PRICE</a></h3>
+<pre><code class="language-solidity">error ZERO_PRICE();
+</code></pre>
+<h3 id="not_lender"><a class="header" href="#not_lender">NOT_LENDER</a></h3>
+<pre><code class="language-solidity">error NOT_LENDER();
+</code></pre>
+<h3 id="not_uint16"><a class="header" href="#not_uint16">NOT_UINT16</a></h3>
+<pre><code class="language-solidity">error NOT_UINT16();
+</code></pre>
+<h3 id="cant_reset"><a class="header" href="#cant_reset">CANT_RESET</a></h3>
+<pre><code class="language-solidity">error CANT_RESET();
+</code></pre>
+<h3 id="wrong_token"><a class="header" href="#wrong_token">WRONG_TOKEN</a></h3>
+<pre><code class="language-solidity">error WRONG_TOKEN();
+</code></pre>
+<h3 id="not_borrower"><a class="header" href="#not_borrower">NOT_BORROWER</a></h3>
+<pre><code class="language-solidity">error NOT_BORROWER();
+</code></pre>
+<h3 id="max_duration"><a class="header" href="#max_duration">MAX_DURATION</a></h3>
+<pre><code class="language-solidity">error MAX_DURATION();
+</code></pre>
+<h3 id="zero_address"><a class="header" href="#zero_address">ZERO_ADDRESS</a></h3>
+<pre><code class="language-solidity">error ZERO_ADDRESS();
+</code></pre>
+<h3 id="invalid_scale"><a class="header" href="#invalid_scale">INVALID_SCALE</a></h3>
+<pre><code class="language-solidity">error INVALID_SCALE();
+</code></pre>
+<h3 id="invalid_price"><a class="header" href="#invalid_price">INVALID_PRICE</a></h3>
+<pre><code class="language-solidity">error INVALID_PRICE();
+</code></pre>
+<h3 id="didnt_borrowed"><a class="header" href="#didnt_borrowed">DIDNT_BORROWED</a></h3>
+<pre><code class="language-solidity">error DIDNT_BORROWED();
+</code></pre>
+<h3 id="invalid_amount"><a class="header" href="#invalid_amount">INVALID_AMOUNT</a></h3>
+<pre><code class="language-solidity">error INVALID_AMOUNT();
+</code></pre>
+<h3 id="critical_error"><a class="header" href="#critical_error">CRITICAL_ERROR</a></h3>
+<pre><code class="language-solidity">error CRITICAL_ERROR();
+</code></pre>
+<h3 id="token_sentinel"><a class="header" href="#token_sentinel">TOKEN_SENTINEL</a></h3>
+<pre><code class="language-solidity">error TOKEN_SENTINEL();
+</code></pre>
+<h3 id="r_zero_payment"><a class="header" href="#r_zero_payment">R_ZERO_PAYMENT</a></h3>
+<pre><code class="language-solidity">error R_ZERO_PAYMENT();
+</code></pre>
+<h3 id="l_zero_payment"><a class="header" href="#l_zero_payment">L_ZERO_PAYMENT</a></h3>
+<pre><code class="language-solidity">error L_ZERO_PAYMENT();
+</code></pre>
+<h3 id="not_zero_address"><a class="header" href="#not_zero_address">NOT_ZERO_ADDRESS</a></h3>
+<pre><code class="language-solidity">error NOT_ZERO_ADDRESS();
+</code></pre>
+<h3 id="wait_return_date"><a class="header" href="#wait_return_date">WAIT_RETURN_DATE</a></h3>
+<pre><code class="language-solidity">error WAIT_RETURN_DATE();
+</code></pre>
+<h3 id="past_return_date"><a class="header" href="#past_return_date">PAST_RETURN_DATE</a></h3>
+<pre><code class="language-solidity">error PAST_RETURN_DATE();
+</code></pre>
+<h3 id="invalid_standard"><a class="header" href="#invalid_standard">INVALID_STANDARD</a></h3>
+<pre><code class="language-solidity">error INVALID_STANDARD();
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ilenddata"><a class="header" href="#ilenddata">ILendData</a></h1>
+<p><a href="https://github.com/pxswap-xyz/pxswap/blob/2c1b5e496d31f38806f41c98ffce3d93b591270c/src/utils/ILendData.sol">Git Source</a></p>
+<h2 id="functions-7"><a class="header" href="#functions-7">Functions</a></h2>
+<h3 id="lend"><a class="header" href="#lend">lend</a></h3>
+<pre><code class="language-solidity">function lend(
+    NFTStandard[] memory nftStandard,
+    address[] memory nftAddress,
+    uint256[] memory tokenID,
+    uint256[] memory lendAmount,
+    uint8[] memory maxBorrowDuration,
+    bytes4[] memory dailyBorrowPrice,
+    uint8[] memory paymentToken,
+    bool[] memory willAutoRenew
+) external;
+</code></pre>
+<h3 id="stoplend"><a class="header" href="#stoplend">stopLend</a></h3>
+<pre><code class="language-solidity">function stopLend(
+    NFTStandard[] memory nftStandard,
+    address[] memory nftAddress,
+    uint256[] memory tokenID,
+    uint256[] memory lendingID
+) external;
+</code></pre>
+<h3 id="borrow"><a class="header" href="#borrow">borrow</a></h3>
+<pre><code class="language-solidity">function borrow(
+    NFTStandard[] memory nftStandard,
+    address[] memory nftAddress,
+    uint256[] memory tokenID,
+    uint256[] memory lendingID,
+    uint8[] memory borrowDuration,
+    uint256[] memory borrowAmount
+) external payable;
+</code></pre>
+<h3 id="stopborrow"><a class="header" href="#stopborrow">stopBorrow</a></h3>
+<pre><code class="language-solidity">function stopBorrow(
+    NFTStandard[] memory nftStandard,
+    address[] memory nftAddress,
+    uint256[] memory tokenID,
+    uint256[] memory lendingID,
+    uint256[] memory borrowingID
+) external;
+</code></pre>
+<h3 id="claimborrow"><a class="header" href="#claimborrow">claimBorrow</a></h3>
+<pre><code class="language-solidity">function claimBorrow(
+    NFTStandard[] memory nftStandard,
+    address[] memory nftAddress,
+    uint256[] memory tokenID,
+    uint256[] memory lendingID,
+    uint256[] memory borrowingID
+) external;
+</code></pre>
+<h2 id="events-2"><a class="header" href="#events-2">Events</a></h2>
+<h3 id="lend-1"><a class="header" href="#lend-1">Lend</a></h3>
+<pre><code class="language-solidity">event Lend(
+    bool is721,
+    address indexed lenderAddress,
+    address indexed nftAddress,
+    uint256 indexed tokenID,
+    uint256 lendingID,
+    uint8 maxBorrowDuration,
+    bytes4 dailyBorrowPrice,
+    uint16 lendAmount,
+    uint8 paymentToken,
+    bool willAutoRenew
+);
+</code></pre>
+<h3 id="borrow-1"><a class="header" href="#borrow-1">Borrow</a></h3>
+<pre><code class="language-solidity">event Borrow(
+    address indexed borrowerAddress,
+    uint256 lendingID,
+    uint256 borrowingID,
+    uint16 borrowAmount,
+    uint8 borrowDuration,
+    uint32 borrowedAt
+);
+</code></pre>
+<h3 id="stoplend-1"><a class="header" href="#stoplend-1">StopLend</a></h3>
+<pre><code class="language-solidity">event StopLend(uint256 indexed lendingID, uint32 stoppedAt, uint16 amount);
+</code></pre>
+<h3 id="stopborrow-1"><a class="header" href="#stopborrow-1">StopBorrow</a></h3>
+<pre><code class="language-solidity">event StopBorrow(uint256 indexed borrowingID, uint32 stoppedAt);
+</code></pre>
+<h3 id="borrowclaimed"><a class="header" href="#borrowclaimed">BorrowClaimed</a></h3>
+<pre><code class="language-solidity">event BorrowClaimed(uint256 indexed borrowingID, uint32 collectedAt);
+</code></pre>
+<h2 id="structs"><a class="header" href="#structs">Structs</a></h2>
+<h3 id="calldata"><a class="header" href="#calldata">CallData</a></h3>
+<pre><code class="language-solidity">struct CallData {
+    uint256 left;
+    uint256 right;
+    NFTStandard[] nftStandard;
+    address[] nftAddress;
+    uint256[] tokenID;
+    uint256[] lendAmount;
+    uint8[] maxBorrowDuration;
+    bytes4[] dailyBorrowPrice;
+    uint256[] lendingID;
+    uint256[] borrowingID;
+    uint8[] borrowDuration;
+    uint256[] borrowAmount;
+    uint8[] paymentToken;
+    bool[] willAutoRenew;
+}
+</code></pre>
+<h3 id="lending"><a class="header" href="#lending">Lending</a></h3>
+<pre><code class="language-solidity">struct Lending {
+    NFTStandard nftStandard;
+    address payable lenderAddress;
+    uint8 maxBorrowDuration;
+    bytes4 dailyBorrowPrice;
+    uint16 lendAmount;
+    uint16 availableAmount;
+    uint8 paymentToken;
+    bool willAutoRenew;
+}
+</code></pre>
+<h3 id="borrowing"><a class="header" href="#borrowing">Borrowing</a></h3>
+<pre><code class="language-solidity">struct Borrowing {
+    address payable borrowerAddress;
+    uint8 borrowDuration;
+    uint32 borrowedAt;
+    uint16 borrowAmount;
+}
+</code></pre>
+<h2 id="enums"><a class="header" href="#enums">Enums</a></h2>
+<h3 id="nftstandard"><a class="header" href="#nftstandard">NFTStandard</a></h3>
+<pre><code class="language-solidity">enum NFTStandard {
+    E721,
+    E1155
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ownable"><a class="header" href="#ownable">Ownable</a></h1>
+<p><a href="https://github.com/pxswap-xyz/pxswap/blob/2c1b5e496d31f38806f41c98ffce3d93b591270c/src/utils/Ownable.sol">Git Source</a></p>
+<h2 id="state-variables"><a class="header" href="#state-variables">State Variables</a></h2>
+<h3 id="_owner"><a class="header" href="#_owner">_owner</a></h3>
+<pre><code class="language-solidity">address private _owner;
+</code></pre>
+<h2 id="functions-8"><a class="header" href="#functions-8">Functions</a></h2>
+<h3 id="constructor"><a class="header" href="#constructor">constructor</a></h3>
+<pre><code class="language-solidity">constructor();
+</code></pre>
+<h3 id="onlyowner"><a class="header" href="#onlyowner">onlyOwner</a></h3>
+<pre><code class="language-solidity">modifier onlyOwner();
+</code></pre>
+<h3 id="owner"><a class="header" href="#owner">owner</a></h3>
+<pre><code class="language-solidity">function owner() public view virtual returns (address);
+</code></pre>
+<h3 id="_checkowner"><a class="header" href="#_checkowner">_checkOwner</a></h3>
+<pre><code class="language-solidity">function _checkOwner() internal view virtual;
+</code></pre>
+<h3 id="transferownership"><a class="header" href="#transferownership">transferOwnership</a></h3>
+<pre><code class="language-solidity">function transferOwnership(address newOwner) public virtual onlyOwner;
+</code></pre>
+<h3 id="_transferownership"><a class="header" href="#_transferownership">_transferOwnership</a></h3>
+<pre><code class="language-solidity">function _transferOwnership(address newOwner) internal virtual;
+</code></pre>
+<h2 id="events-3"><a class="header" href="#events-3">Events</a></h2>
+<h3 id="ownershiptransferred"><a class="header" href="#ownershiptransferred">OwnershipTransferred</a></h3>
+<pre><code class="language-solidity">event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="pxlend"><a class="header" href="#pxlend">PxLend</a></h1>
+<p><a href="https://github.com/pxswap-xyz/pxswap/blob/2c1b5e496d31f38806f41c98ffce3d93b591270c/src/PxLend.sol">Git Source</a></p>
+<p><strong>Inherits:</strong>
+<a href="src/PxLend.sol//src/utils/ILendData.sol/contract.ILendData.html">ILendData</a>, <a href="src/PxLend.sol//src/utils/Ownable.sol/contract.Ownable.html">Ownable</a>, <a href="src/PxLend.sol//src/utils/ERC721Holder.sol/contract.ERC721Holder.html">ERC721Holder</a>, ERC1155Receiver, ERC1155Holder</p>
+<p><strong>Authors:</strong>
+pxswap (https://github.com/pxswap-xyz/pxswap/blob/main/src/Pxswap.sol), Ali Konuk - @alikonuk1</p>
+<p><em>This contract is for lending and borrowing non-fungible tokens (NFTs)</em></p>
+<p><em>Please reach out to ali@pxswap.xyz if you find any issues</em></p>
+<h2 id="state-variables-1"><a class="header" href="#state-variables-1">State Variables</a></h2>
+<h3 id="beneficiary"><a class="header" href="#beneficiary">beneficiary</a></h3>
+<pre><code class="language-solidity">address payable private beneficiary;
+</code></pre>
+<h3 id="seconds_in_day"><a class="header" href="#seconds_in_day">SECONDS_IN_DAY</a></h3>
+<pre><code class="language-solidity">uint256 private constant SECONDS_IN_DAY = 86400;
+</code></pre>
+<h3 id="lendingid"><a class="header" href="#lendingid">lendingID</a></h3>
+<pre><code class="language-solidity">uint256 private lendingID = 1;
+</code></pre>
+<h3 id="borrowingid"><a class="header" href="#borrowingid">borrowingID</a></h3>
+<pre><code class="language-solidity">uint256 private borrowingID = 1;
+</code></pre>
+<h3 id="borrowfee"><a class="header" href="#borrowfee">borrowFee</a></h3>
+<pre><code class="language-solidity">uint256 public borrowFee = 100;
+</code></pre>
+<h3 id="tokenmap"><a class="header" href="#tokenmap">tokenMap</a></h3>
+<pre><code class="language-solidity">mapping(uint8 =&gt; address) private tokenMap;
+</code></pre>
+<h3 id="lendings"><a class="header" href="#lendings">lendings</a></h3>
+<pre><code class="language-solidity">mapping(bytes32 =&gt; Lending) private lendings;
+</code></pre>
+<h3 id="borrowings"><a class="header" href="#borrowings">borrowings</a></h3>
+<pre><code class="language-solidity">mapping(bytes32 =&gt; Borrowing) private borrowings;
+</code></pre>
+<h2 id="functions-9"><a class="header" href="#functions-9">Functions</a></h2>
+<h3 id="constructor-1"><a class="header" href="#constructor-1">constructor</a></h3>
+<pre><code class="language-solidity">constructor(address payable beneficiary_);
+</code></pre>
+<h3 id="lend-2"><a class="header" href="#lend-2">lend</a></h3>
+<pre><code class="language-solidity">function lend(
+    ILendData.NFTStandard[] memory nftStandard,
+    address[] memory nftAddress,
+    uint256[] memory tokenID,
+    uint256[] memory lendAmount,
+    uint8[] memory maxBorrowDuration,
+    bytes4[] memory dailyBorrowPrice,
+    uint8[] memory paymentToken,
+    bool[] memory willAutoRenew
+) external;
+</code></pre>
+<h3 id="stoplend-2"><a class="header" href="#stoplend-2">stopLend</a></h3>
+<pre><code class="language-solidity">function stopLend(
+    ILendData.NFTStandard[] memory nftStandard,
+    address[] memory nftAddress,
+    uint256[] memory tokenID,
+    uint256[] memory _lendingID
+) external;
+</code></pre>
+<h3 id="borrow-2"><a class="header" href="#borrow-2">borrow</a></h3>
+<pre><code class="language-solidity">function borrow(
+    ILendData.NFTStandard[] memory nftStandard,
+    address[] memory nftAddress,
+    uint256[] memory tokenID,
+    uint256[] memory _lendingID,
+    uint8[] memory borrowDuration,
+    uint256[] memory borrowAmount
+) external payable;
+</code></pre>
+<h3 id="stopborrow-2"><a class="header" href="#stopborrow-2">stopBorrow</a></h3>
+<pre><code class="language-solidity">function stopBorrow(
+    ILendData.NFTStandard[] memory nftStandard,
+    address[] memory nftAddress,
+    uint256[] memory tokenID,
+    uint256[] memory _lendingID,
+    uint256[] memory _borrowingID
+) external;
+</code></pre>
+<h3 id="claimborrow-1"><a class="header" href="#claimborrow-1">claimBorrow</a></h3>
+<pre><code class="language-solidity">function claimBorrow(
+    ILendData.NFTStandard[] memory nftStandard,
+    address[] memory nftAddress,
+    uint256[] memory tokenID,
+    uint256[] memory _lendingID,
+    uint256[] memory _borrowingID
+) external;
+</code></pre>
+<h3 id="handlelend"><a class="header" href="#handlelend">handleLend</a></h3>
+<pre><code class="language-solidity">function handleLend(ILendData.CallData memory cd) internal;
+</code></pre>
+<h3 id="handlestoplend"><a class="header" href="#handlestoplend">handleStopLend</a></h3>
+<pre><code class="language-solidity">function handleStopLend(ILendData.CallData memory cd) internal;
+</code></pre>
+<h3 id="handleborrow"><a class="header" href="#handleborrow">handleBorrow</a></h3>
+<pre><code class="language-solidity">function handleBorrow(ILendData.CallData memory cd) internal;
+</code></pre>
+<h3 id="handlestopborrow"><a class="header" href="#handlestopborrow">handleStopBorrow</a></h3>
+<pre><code class="language-solidity">function handleStopBorrow(ILendData.CallData memory cd) private;
+</code></pre>
+<h3 id="handleclaimborrow"><a class="header" href="#handleclaimborrow">handleClaimBorrow</a></h3>
+<pre><code class="language-solidity">function handleClaimBorrow(CallData memory cd) private;
+</code></pre>
+<h3 id="managewillautorenew"><a class="header" href="#managewillautorenew">manageWillAutoRenew</a></h3>
+<pre><code class="language-solidity">function manageWillAutoRenew(
+    ILendData.Lending storage lending,
+    ILendData.Borrowing storage borrowing,
+    address nftAddress,
+    ILendData.NFTStandard nftStandard,
+    uint256 tokenID,
+    uint256 lendingID
+) internal;
+</code></pre>
+<h3 id="bundlecall"><a class="header" href="#bundlecall">bundleCall</a></h3>
+<pre><code class="language-solidity">function bundleCall(function(ILendData.CallData memory) handler, ILendData.CallData memory cd) internal;
+</code></pre>
+<h3 id="takefee"><a class="header" href="#takefee">takeFee</a></h3>
+<pre><code class="language-solidity">function takeFee(uint256 borrowAmt, ERC20 token) internal returns (uint256 fee);
+</code></pre>
+<h3 id="distributepayments"><a class="header" href="#distributepayments">distributePayments</a></h3>
+<pre><code class="language-solidity">function distributePayments(
+    ILendData.Lending memory lending,
+    ILendData.Borrowing memory borrowing,
+    uint256 secondsSinceBorrowStart
+) private;
+</code></pre>
+<h3 id="distributeclaimpayment"><a class="header" href="#distributeclaimpayment">distributeClaimPayment</a></h3>
+<pre><code class="language-solidity">function distributeClaimPayment(ILendData.Lending memory lending, ILendData.Borrowing memory borrowing) internal;
+</code></pre>
+<h3 id="safetransfer"><a class="header" href="#safetransfer">safeTransfer</a></h3>
+<pre><code class="language-solidity">function safeTransfer(
+    CallData memory cd,
+    address from,
+    address to,
+    uint256[] memory tokenID,
+    uint256[] memory lendAmount
+) internal;
+</code></pre>
+<h3 id="getlending9cff8d4"><a class="header" href="#getlending9cff8d4">getLending9CFF8D4</a></h3>
+<pre><code class="language-solidity">function getLending9CFF8D4(address nftAddress, uint256 tokenID, uint256 _lendingID)
+    external
+    view
+    returns (uint8, address, uint8, bytes4, uint16, uint16, uint8);
+</code></pre>
+<h3 id="getborrowing144dc65d"><a class="header" href="#getborrowing144dc65d">getBorrowing144DC65D</a></h3>
+<pre><code class="language-solidity">function getBorrowing144DC65D(address nftAddress, uint256 tokenID, uint256 _borrowingID)
+    external
+    view
+    returns (address, uint16, uint8, uint32);
+</code></pre>
+<h3 id="createlendcalldata"><a class="header" href="#createlendcalldata">createLendCallData</a></h3>
+<pre><code class="language-solidity">function createLendCallData(
+    ILendData.NFTStandard[] memory nftStandard,
+    address[] memory nftAddress,
+    uint256[] memory tokenID,
+    uint256[] memory lendAmount,
+    uint8[] memory maxBorrowDuration,
+    bytes4[] memory dailyBorrowPrice,
+    uint8[] memory paymentToken,
+    bool[] memory willAutoRenew
+) internal pure returns (CallData memory cd);
+</code></pre>
+<h3 id="createborrowcalldata"><a class="header" href="#createborrowcalldata">createBorrowCallData</a></h3>
+<pre><code class="language-solidity">function createBorrowCallData(
+    ILendData.NFTStandard[] memory nftStandard,
+    address[] memory nftAddress,
+    uint256[] memory tokenID,
+    uint256[] memory _lendingID,
+    uint8[] memory borrowDuration,
+    uint256[] memory borrowAmount
+) internal pure returns (CallData memory cd);
+</code></pre>
+<h3 id="createactioncalldata"><a class="header" href="#createactioncalldata">createActionCallData</a></h3>
+<pre><code class="language-solidity">function createActionCallData(
+    ILendData.NFTStandard[] memory nftStandard,
+    address[] memory nftAddress,
+    uint256[] memory tokenID,
+    uint256[] memory _lendingID,
+    uint256[] memory _borrowingID
+) internal pure returns (CallData memory cd);
+</code></pre>
+<h3 id="unpackprice"><a class="header" href="#unpackprice">unpackPrice</a></h3>
+<pre><code class="language-solidity">function unpackPrice(bytes4 price, uint256 scale) internal pure returns (uint256);
+</code></pre>
+<h3 id="slicearr"><a class="header" href="#slicearr">sliceArr</a></h3>
+<pre><code class="language-solidity">function sliceArr(uint256[] memory arr, uint256 fromIx, uint256 toIx, uint256 arrOffset)
+    internal
+    pure
+    returns (uint256[] memory r);
+</code></pre>
+<h3 id="isnotzero"><a class="header" href="#isnotzero">isNotZero</a></h3>
+<pre><code class="language-solidity">function isNotZero(address addr) internal pure;
+</code></pre>
+<h3 id="iszero"><a class="header" href="#iszero">isZero</a></h3>
+<pre><code class="language-solidity">function isZero(address addr) internal pure;
+</code></pre>
+<h3 id="isreturnable"><a class="header" href="#isreturnable">isReturnable</a></h3>
+<pre><code class="language-solidity">function isReturnable(Borrowing memory borrowing, address msgSender, uint256 blockTimestamp) internal pure;
+</code></pre>
+<h3 id="ispastreturndate"><a class="header" href="#ispastreturndate">isPastReturnDate</a></h3>
+<pre><code class="language-solidity">function isPastReturnDate(Borrowing memory borrowing, uint256 nowTime) internal pure returns (bool);
+</code></pre>
+<h3 id="getpaymenttoken"><a class="header" href="#getpaymenttoken">getPaymentToken</a></h3>
+<pre><code class="language-solidity">function getPaymentToken(uint8 paymentToken) internal view returns (address);
+</code></pre>
+<h3 id="setpaymenttoken"><a class="header" href="#setpaymenttoken">setPaymentToken</a></h3>
+<pre><code class="language-solidity">function setPaymentToken(uint8 paymentToken, address t) external payable onlyOwner;
+</code></pre>
+<h3 id="setborrowfee"><a class="header" href="#setborrowfee">setBorrowFee</a></h3>
+<pre><code class="language-solidity">function setBorrowFee(uint256 borrowFee_) external payable onlyOwner;
+</code></pre>
+<h3 id="setbeneficiary"><a class="header" href="#setbeneficiary">setBeneficiary</a></h3>
+<pre><code class="language-solidity">function setBeneficiary(address payable beneficiary_) external payable onlyOwner;
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="pxswap"><a class="header" href="#pxswap">Pxswap</a></h1>
+<p><a href="https://github.com/pxswap-xyz/pxswap/blob/2c1b5e496d31f38806f41c98ffce3d93b591270c/src/Pxswap.sol">Git Source</a></p>
+<p><strong>Inherits:</strong>
+<a href="src/Pxswap.sol//src/SwapData.sol/contract.SwapData.html">SwapData</a>, <a href="src/Pxswap.sol//src/utils/Ownable.sol/contract.Ownable.html">Ownable</a>, <a href="src/Pxswap.sol//src/utils/HandleERC20.sol/contract.HandleERC20.html">HandleERC20</a>, <a href="src/Pxswap.sol//src/utils/HandleERC721.sol/contract.HandleERC721.html">HandleERC721</a>, <a href="src/Pxswap.sol//src/utils/ERC721Holder.sol/contract.ERC721Holder.html">ERC721Holder</a></p>
+<p><strong>Authors:</strong>
+pxswap (https://github.com/pxswap-xyz/pxswap/blob/main/src/Pxswap.sol), Ali Konuk - @alikonuk1</p>
+<p><em>This contract is for buying, selling and swapping non-fungible tokens (NFTs)</em></p>
+<p><em>Please reach out to ali@pxswap.xyz if you find any issues</em></p>
+<h2 id="state-variables-2"><a class="header" href="#state-variables-2">State Variables</a></h2>
+<h3 id="swaps"><a class="header" href="#swaps">swaps</a></h3>
+<pre><code class="language-solidity">Swap[] public swaps;
+</code></pre>
+<h3 id="protocol"><a class="header" href="#protocol">protocol</a></h3>
+<pre><code class="language-solidity">address public protocol;
+</code></pre>
+<h3 id="pxnft"><a class="header" href="#pxnft">pxNft</a></h3>
+<pre><code class="language-solidity">address public pxNft;
+</code></pre>
+<h3 id="flatfee"><a class="header" href="#flatfee">flatFee</a></h3>
+<pre><code class="language-solidity">uint256 public flatFee;
+</code></pre>
+<h3 id="discountedfee"><a class="header" href="#discountedfee">discountedFee</a></h3>
+<pre><code class="language-solidity">uint256 public discountedFee;
+</code></pre>
+<h3 id="fee"><a class="header" href="#fee">fee</a></h3>
+<pre><code class="language-solidity">uint256 public fee;
+</code></pre>
+<h3 id="mutex"><a class="header" href="#mutex">mutex</a></h3>
+<pre><code class="language-solidity">bool public mutex;
+</code></pre>
+<h2 id="functions-10"><a class="header" href="#functions-10">Functions</a></h2>
+<h3 id="putswap"><a class="header" href="#putswap">putSwap</a></h3>
+<p><em>Creates a new swap by the seller with the specified NFTs and tokens offered.</em></p>
+<pre><code class="language-solidity">function putSwap(
+    address[] memory nftsGiven,
+    uint256[] memory idsGiven,
+    address[] memory nftsWanted,
+    address buyer,
+    address tokenWanted,
+    uint256 amount,
+    uint256 ethAmount
+) external noReentrancy;
+</code></pre>
+<p><strong>Parameters</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>nftsGiven</code></td><td><code>address[]</code></td><td>Array of addresses of the NFTs given by the seller.</td></tr>
+<tr><td><code>idsGiven</code></td><td><code>uint256[]</code></td><td>Array of IDs of the NFTs given by the seller.</td></tr>
+<tr><td><code>nftsWanted</code></td><td><code>address[]</code></td><td>Array of addresses of the NFTs wanted by the seller.</td></tr>
+<tr><td><code>buyer</code></td><td><code>address</code></td><td>The address of the buyer for the swap.</td></tr>
+<tr><td><code>tokenWanted</code></td><td><code>address</code></td><td>The address of the ERC20 token wanted by the seller.</td></tr>
+<tr><td><code>amount</code></td><td><code>uint256</code></td><td>The amount of ERC20 tokens wanted by the seller.</td></tr>
+<tr><td><code>ethAmount</code></td><td><code>uint256</code></td><td>The amount of ether wanted by the seller. Emits a {PutSwap} event indicating the creation of the swap and its ID.</td></tr>
+</tbody></table>
+</div>
+<h3 id="cancelswap"><a class="header" href="#cancelswap">cancelSwap</a></h3>
+<p><em>Allows the seller to cancel an active swap and transfer the ERC721 tokens back to the seller.</em></p>
+<pre><code class="language-solidity">function cancelSwap(uint256 id) external noReentrancy;
+</code></pre>
+<p><strong>Parameters</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>id</code></td><td><code>uint256</code></td><td>The ID of the swap to be cancelled.</td></tr>
+</tbody></table>
+</div>
+<h3 id="acceptswap"><a class="header" href="#acceptswap">acceptSwap</a></h3>
+<p><em>Allows the buyer to accept a swap by ID and transfer the assets to the respective parties.</em></p>
+<pre><code class="language-solidity">function acceptSwap(uint256 id, uint256[] memory tokenIds) public payable noReentrancy;
+</code></pre>
+<p><strong>Parameters</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>id</code></td><td><code>uint256</code></td><td>The ID of the swap to be accepted.</td></tr>
+<tr><td><code>tokenIds</code></td><td><code>uint256[]</code></td><td>An array of token IDs for ERC721 tokens.</td></tr>
+</tbody></table>
+</div>
+<h3 id="setprotocol"><a class="header" href="#setprotocol">setProtocol</a></h3>
+<p><em>Function to set the protocol address.</em></p>
+<pre><code class="language-solidity">function setProtocol(address protocol_) external onlyOwner;
+</code></pre>
+<p><strong>Parameters</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>protocol_</code></td><td><code>address</code></td><td>The address of the protocol.</td></tr>
+</tbody></table>
+</div>
+<h3 id="setfee"><a class="header" href="#setfee">setFee</a></h3>
+<p><em>Allows the contract owner to set the transaction fee.</em></p>
+<pre><code class="language-solidity">function setFee(uint256 fee_) external onlyOwner;
+</code></pre>
+<p><strong>Parameters</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>fee_</code></td><td><code>uint256</code></td><td>The new transaction fee.</td></tr>
+</tbody></table>
+</div>
+<h3 id="setdiscountedfee"><a class="header" href="#setdiscountedfee">setDiscountedFee</a></h3>
+<p><em>Allows the contract owner to set the discounted transaction fee.</em></p>
+<pre><code class="language-solidity">function setDiscountedFee(uint256 discountedFee_) external onlyOwner;
+</code></pre>
+<p><strong>Parameters</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>discountedFee_</code></td><td><code>uint256</code></td><td>The new discounted transaction fee.</td></tr>
+</tbody></table>
+</div>
+<h3 id="setflatfee"><a class="header" href="#setflatfee">setFlatFee</a></h3>
+<p><em>Allows the contract owner to set the flat transaction fee.</em></p>
+<pre><code class="language-solidity">function setFlatFee(uint256 flatFee_) external onlyOwner;
+</code></pre>
+<p><strong>Parameters</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>flatFee_</code></td><td><code>uint256</code></td><td>The new flat transaction fee.</td></tr>
+</tbody></table>
+</div>
+<h3 id="setpxnft"><a class="header" href="#setpxnft">setPxNft</a></h3>
+<p><em>Allows the contract owner to set the pxswap's nft contract address.</em></p>
+<pre><code class="language-solidity">function setPxNft(address pxNft_) external onlyOwner;
+</code></pre>
+<p><strong>Parameters</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>pxNft_</code></td><td><code>address</code></td><td>pxswap's nft contract address.</td></tr>
+</tbody></table>
+</div>
+<h3 id="noreentrancy"><a class="header" href="#noreentrancy">noReentrancy</a></h3>
+<pre><code class="language-solidity">modifier noReentrancy();
+</code></pre>
+<h3 id="_nonreentrantbefore"><a class="header" href="#_nonreentrantbefore">_nonReentrantBefore</a></h3>
+<pre><code class="language-solidity">function _nonReentrantBefore() internal;
+</code></pre>
+<h3 id="_nonreentrantafter"><a class="header" href="#_nonreentrantafter">_nonReentrantAfter</a></h3>
+<pre><code class="language-solidity">function _nonReentrantAfter() internal;
+</code></pre>
+<h3 id="getlength"><a class="header" href="#getlength">getLength</a></h3>
+<p><em>Returns the number of swaps in the contract.</em></p>
+<pre><code class="language-solidity">function getLength() external view returns (uint256);
+</code></pre>
+<p><strong>Returns</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>&lt;none&gt;</code></td><td><code>uint256</code></td><td>The length of the swaps array.</td></tr>
+</tbody></table>
+</div>
+<h3 id="getswap"><a class="header" href="#getswap">getSwap</a></h3>
+<p><em>Returns the details of a specific swap by its ID.</em></p>
+<pre><code class="language-solidity">function getSwap(uint256 id) external view returns (Swap memory);
+</code></pre>
+<p><strong>Parameters</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>id</code></td><td><code>uint256</code></td><td>The ID of the swap to be retrieved.</td></tr>
+</tbody></table>
+</div>
+<p><strong>Returns</strong></p>
+<div class="table-wrapper"><table><thead><tr><th>Name</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>&lt;none&gt;</code></td><td><code>Swap</code></td><td>The details of the swap as a memory struct.</td></tr>
+</tbody></table>
+</div>
+<h2 id="events-4"><a class="header" href="#events-4">Events</a></h2>
+<h3 id="putswap-1"><a class="header" href="#putswap-1">PutSwap</a></h3>
+<pre><code class="language-solidity">event PutSwap(uint256 indexed id);
+</code></pre>
+<h3 id="cancelswap-1"><a class="header" href="#cancelswap-1">CancelSwap</a></h3>
+<pre><code class="language-solidity">event CancelSwap(uint256 indexed id);
+</code></pre>
+<h3 id="acceptswap-1"><a class="header" href="#acceptswap-1">AcceptSwap</a></h3>
+<pre><code class="language-solidity">event AcceptSwap(uint256 indexed id);
+</code></pre>
+<h2 id="errors-2"><a class="header" href="#errors-2">Errors</a></h2>
+<h3 id="unauthorized"><a class="header" href="#unauthorized">Unauthorized</a></h3>
+<pre><code class="language-solidity">error Unauthorized();
+</code></pre>
+<h3 id="notactive"><a class="header" href="#notactive">NotActive</a></h3>
+<pre><code class="language-solidity">error NotActive();
+</code></pre>
+<h3 id="notenougheth"><a class="header" href="#notenougheth">NotEnoughEth</a></h3>
+<pre><code class="language-solidity">error NotEnoughEth();
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="swapdata"><a class="header" href="#swapdata">SwapData</a></h1>
+<p><a href="https://github.com/pxswap-xyz/pxswap/blob/2c1b5e496d31f38806f41c98ffce3d93b591270c/src/SwapData.sol">Git Source</a></p>
+<h2 id="structs-1"><a class="header" href="#structs-1">Structs</a></h2>
+<h3 id="swap"><a class="header" href="#swap">Swap</a></h3>
+<pre><code class="language-solidity">struct Swap {
+    uint256[] giveId;
+    uint256 amount;
+    uint256 ethAmount;
+    address seller;
+    address buyer;
+    address[] giveNft;
+    address[] wantNft;
+    address wantToken;
+    bool active;
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="solidity.min.js"></script>
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </body>
+</html>
